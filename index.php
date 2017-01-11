@@ -68,7 +68,7 @@ $students = array(
 );
 
 $ou = file_get_contents("http://volsu.ru/activities/education/eduprogs/rating.php?plan=000000843&list=13&level=03&profile=");
-$subjects = array("Алгебра и геометрия", "Иностранный язык", "Информатика", "Математический анализ", "Основы математического моделирования", "Прикладная физическая культура", "Русский язык и культура речи", "Физическая культура", "Языки высокого уровня");
+$subjects = array("Иностранный язык", "История", "Математический анализ", "Прикладная физическая культура", "Технологии сети Интернет", "Физика", "Физическая культура", "Языки высокого уровня");
 
 function get_results($id, $out, $phio)
 {
@@ -84,7 +84,7 @@ function get_results($id, $out, $phio)
     $TextMessage = "";
     $total = "";
 
-    for($i = 0; $i<9; $i++)
+    for($i = 0; $i<8; $i++)
     {
         $curr_str = str_replace("</td>", "", $mas[$i+1]);
         $curr_str = (int)str_replace("<br>", "", $curr_str);
@@ -97,7 +97,7 @@ function get_results($id, $out, $phio)
 echo '<input class="filter" name="livefilter" type="text" placeholder="Поиск по именам и количеству баллов" value="" autofocus>';
 echo "<table class='table table-striped table-bordered spc live_filter'>";
 echo "<tr id='thead' style='cursor: pointer;'><td onclick='sort2(this)'>ФИО</td>";
-for($p=0; $p < 9; $p++)
+for($p=0; $p < 8; $p++)
 {
     echo "<td onclick='sort(this)'>".$subjects[$p]."</td>";
 }
