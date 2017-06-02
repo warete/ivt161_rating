@@ -17,7 +17,7 @@
 
 <style>  
     .warete {
-        background: url("crown.png");
+        background: url("/crown.png");
         width: 30px;
         height: 20px;
         display: inline-block;
@@ -55,7 +55,7 @@
         color: #fff;        
     }
     #thead {
-        display: table-row;
+        display: table-row !important;
     }
     .filter {
         width: 100%;
@@ -102,7 +102,7 @@
             display: none !important;
         }
         .mob_rate {
-            display: table-row;
+            display: table;
         }
         .filter {
             display: none;
@@ -143,7 +143,7 @@ function get_results($id, $out, $phio)
     $points = 0;
     
     //echo $out;
-    echo "<tr class='desktop_rate'><td class='name'>{$phio}</td>";
+    echo "<tr><td class='name'>{$phio}</td>";
     
     $mas = explode($id, $out);
     $mas2 = explode("</tr>", $mas[1]);
@@ -181,7 +181,7 @@ function get_results_m($id, $out, $phio)
     $points = 0;
     
     //echo $out;
-    echo "<tr class='mob_rate' data-tag='student{$id}'><td class='name' colspan='2'>{$phio}</td></tr>";
+    echo "<tr data-tag='student{$id}'><td class='name' colspan='2'>{$phio}</td></tr>";
     
     $mas = explode($id, $out);
     $mas2 = explode("</tr>", $mas[1]);
@@ -197,12 +197,12 @@ function get_results_m($id, $out, $phio)
         $curr_strs = str_replace("<br>", "", $curr_strs);
         $curr_str = str_replace("</td>", "", $mas[$i+1]);
         $curr_str = (int)str_replace("<br>", "", $curr_str);
-        echo "<tr class='mob_rate' data-tag='student{$id}'><td>{$curr_strs}</td><td>{$curr_str}</td></tr>";
+        echo "<tr data-tag='student{$id}'><td>{$curr_strs}</td><td>{$curr_str}</td></tr>";
         //$TextMessage .= "<tr><td>{$subjects[$i]}</td><td>{$curr_str}</td></tr>";
         $total .= $subjects[$i]." - ".trim($curr_str)."\n\r";  
         $points += $curr_str;
     }
-    echo "<tr class='mob_rate' data-tag='student{$id}'><td><b>Всего баллов</b></td><td>{$points}</td></tr>";
+    echo "<tr data-tag='student{$id}'><td><b>Всего баллов</b></td><td>{$points}</td></tr>";
 }
     
 /*
@@ -274,13 +274,21 @@ $ou = file_get_contents("http://volsu.ru/activities/education/eduprogs/rating.ph
  *Формирование DOM
  */
 echo '<input class="filter" name="livefilter" type="text" placeholder="Поиск по именам и количеству баллов" value="" autofocus>';
-echo "<table class='table table-bordered spc live_filter'>";
-echo "<tr class='desktop_rate' id='thead' style='cursor: pointer;'><td onclick='sort2(this)'>ФИО</td>";
+echo "<table class='table table-bordered spc live_filter desktop_rate'>";
+echo "<tr id='thead' style='cursor: pointer;'><td onclick='sort2(this)'>ФИО</td>";
 get_subjects($ou);
 
 for($j=0; $j < 28; $j++)
 {    
     get_results($students[$j][1], $ou, $students[$j][0]);
+    // get_results_m($students[$j][1], $ou, $students[$j][0]);
+}
+
+echo "</table>";
+
+echo "<table class='table table-bordered mob_rate'>";
+for($j=0; $j < 28; $j++)
+{        
     get_results_m($students[$j][1], $ou, $students[$j][0]);
 }
 
