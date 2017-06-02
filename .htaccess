@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteBase /
+
+# Товар.
+RewriteRule ^semestr/([0-9]+)?$	index.php?sem=$1
