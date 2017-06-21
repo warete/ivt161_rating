@@ -238,7 +238,6 @@ $students = array(
                 array("Байша Юлия Геннадьевна", 579549),
                 array("<div class='warete'></div> Борисовский Егор Иванович aka Мистор Варете", 283732),
                 array("Бритвин Егор Валерьевич aka Мистор Брутвен", 872975),
-                array("Дунюшкин Иван Дмитриевич", 459692),
                 array("Иванюк Владислав Алексеевич aka Дядя Шнюк", 584397),
                 array("Козак Ростислав Рустамович", 395729),
                 array("Коноваленко Оксана Вячеславовна", 543853),
@@ -255,7 +254,6 @@ $students = array(
                 array("Плиско Максим Игоревич", 969672),
                 array("Попов Максим Евгеньевич", 725929),
                 array("Примаченко Светлана Владимировна", 933751),
-                array("Свериденко Никита Алексеевич", 656314),
                 array("Смолякова Анна Дмитриевна", 326678),
                 array("Солтагираев Мехди Умарович", 295988),
                 array("Титовский Даниил Викторович", 498437),
@@ -278,7 +276,7 @@ echo "<table class='table table-bordered spc live_filter desktop_rate'>";
 echo "<tr id='thead' style='cursor: pointer;'><td onclick='sort2(this)'>ФИО</td>";
 get_subjects($ou);
 
-for($j=0; $j < 28; $j++)
+for($j=0; $j < count($students); $j++)
 {    
     get_results($students[$j][1], $ou, $students[$j][0]);
     // get_results_m($students[$j][1], $ou, $students[$j][0]);
@@ -287,7 +285,7 @@ for($j=0; $j < 28; $j++)
 echo "</table>";
 
 echo "<table class='table table-bordered mob_rate'>";
-for($j=0; $j < 28; $j++)
+for($j=0; $j < count($students); $j++)
 {        
     get_results_m($students[$j][1], $ou, $students[$j][0]);
 }
