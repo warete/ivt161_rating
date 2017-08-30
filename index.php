@@ -65,11 +65,52 @@ if(isset($_GET['sem'])){
 
             <!-- Table -->
             <table class="table table_ras">
-                <tr><td>8<sup>30</sup></td><td><strong>Физика (л), 4-08А</strong><br>Проф. Михайлова В.А.</td><td></td></tr>
-                <tr><td>10<sup>10</sup></td><td></td><td></td></tr>
-                <tr><td>12<sup>00</sup></td><td><strong>ИСТОРИЯ(л), 4-29Г</strong><br>Доц. Фурман Е.Л.</td><td></td></tr>
-                <tr><td>13<sup>40</sup></td><td><strong>Языки высокого уровня (лаб), 1-06М</strong><br>доц. Хохлова С.С., ст.преп. Дьяконова Т.А.</td><td></td></tr>
-                <tr><td>15<sup>20</sup></td><td colspan="2"></td></tr>
+                <tr>
+                    <td>8<sup>30</sup></td>
+                    <td colspan="2">
+                        <strong>Физика (л), 3-01А</strong><br>Проф. Михайлова В.А.                    
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10<sup>10</sup></td>
+                    <td colspan="2">
+                        <strong>Объектно-ориентированное программирование (л), 3-02 М</strong>
+                        <br>
+                        Проф. Феськков С.В.
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12<sup>00</sup></td>
+                    <td>
+                        <div class="chis"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
+                        <hr>
+                        <div class="zn">Окно</div>
+                    </td>
+                    <td>
+                        <div class="chis">Окно</div>
+                        <hr>
+                        <div class="zn"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>13<sup>40</sup></td>
+                    <td>
+                        <div class="chis"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
+                        <hr>
+                        <div class="zn">Окно</div>
+                    </td>
+                    <td>
+                        <div class="chis">Окно</div>
+                        <hr>
+                        <div class="zn"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>15<sup>20</sup></td>
+                    <td colspan="2"></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -80,11 +121,45 @@ if(isset($_GET['sem'])){
 
             <!-- Table -->
             <table class="table table_ras">
-                <tr><td>8<sup>30</sup></td><td colspan="2"><div class="chis"><strong>История (с), 2-04М</strong><br>Доц. Арчебасова Н.А.</div><hr><div class="zn">Окно</div></td></tr>
-                <tr><td>10<sup>10</sup></td><td><strong>Технологии сети Интернет(лаб), 1-05М,</strong><br>Доц. Писарев А.В., асс. Грицкевич М.В.</td><td><strong>Ин.Яз., 2-04М</strong><br>Асс. Буланов Д.А.</td></tr>
-                <tr><td>12<sup>00</sup></td><td colspan="2"><strong>Физика (с), 2-11М</strong><br>Доц. Федунов Р.Г.</td></tr>
-                <tr><td>13<sup>40</sup></td><td colspan="2"></td></tr>
-                <tr><td>15<sup>20</sup></td><td colspan="2"></td></tr>
+                <tr>
+                    <td>8<sup>30</sup></td>
+                    <td colspan="2">
+                        <strong>Математическое моделирование физических систем (л), 3-02 М</strong>
+                        <br>
+                        Доц. Тен А.В.
+                    </td>
+                </tr>
+                <tr>
+                    <td>10<sup>10</sup></td>
+                    <td colspan="2">
+                        <strong>Дискретная математика (л), 3-02 М</strong>
+                        <br>
+                        Доц. Лебедев В.Н.
+                    </td>
+                </tr>
+                <tr>
+                    <td>12<sup>00</sup></td>
+                    <td colspan="2">
+                        <strong>ПРИКЛАДНАЯ ФИЗИЧЕСКАЯ КУЛЬТУРА</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>13<sup>40</sup></td>
+                    <td>
+                        <strong>Ин.Яз., 33-01 А</strong>
+                        <br>
+                        Ст.пр. Ашихманова Н.А.
+                    </td>
+                    <td>
+                        <strong>Ин.Яз., 3-03 А</strong>
+                        <br>
+                        Асс. Павлова Е.Б.
+                    </td>
+                </tr>
+                <tr>
+                    <td>15<sup>20</sup></td>
+                    <td colspan="2"></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -95,11 +170,34 @@ if(isset($_GET['sem'])){
 
             <!-- Table -->
             <table class="table table_ras">
-                <tr><td>8<sup>30</sup></td><td colspan="2"><strong>Математический анализ (л), 3-02М</strong><br>Доц. Корольков С.А.</td></tr>
-                <tr><td>10<sup>10</sup></td><td><strong>Ин.Яз., 3-04А</strong><br>Ст.преп. Ашихманова Н.А.</td><td><strong>Технологии сети Интернет(лаб),1-05М,</strong><br>ст.преп. Сиволобов С.В., асс. Андреева И.И.</td></tr>
-                <tr><td>12<sup>00</sup></td><td colspan="2"><strong>ФИЗИЧЕСКАЯ КУЛЬТУРА</strong></td></tr>
-                <tr><td>13<sup>40</sup></td><td colspan="2"></td></tr>
-                <tr><td>15<sup>20</sup></td><td colspan="2"></td></tr>
+                <tr>
+                    <td>8<sup>30</sup></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>10<sup>10</sup></td>
+                    <td colspan="2">
+                        <strong>Об.ориент.программ. (лаб), 1-12М, 1-13М</strong>
+                        <br>
+                        Доц. Хохлова С.С., доц. Юданов В.В., асс. Шафран Ю.В.
+                    </td>
+                </tr>
+                <tr>
+                    <td>12<sup>00</sup></td>
+                    <td colspan="2">
+                        <strong>Физика (с), 2-11 М</strong>
+                        <br>
+                        Асс. Лебедева О.С.
+                    </td>
+                </tr>
+                <tr>
+                    <td>13<sup>40</sup></td>
+                    <td colspan="2"><strong>ГУМАНИТАРНЫЕ КУРСЫ ПО ВЫБОРУ</strong></td>
+                </tr>
+                <tr>
+                    <td>15<sup>20</sup></td>
+                    <td colspan="2"></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -112,11 +210,34 @@ if(isset($_GET['sem'])){
 
             <!-- Table -->
             <table class="table table_ras">
-                <tr><td>8<sup>30</sup></td><td colspan="2"></td></tr>
-                <tr><td>10<sup>10</sup></td><td colspan="2"></td></tr>
-                <tr><td>12<sup>00</sup></td><td colspan="2"></td></tr>
-                <tr><td>13<sup>40</sup></td><td colspan="2"></td></tr>
-                <tr><td>15<sup>20</sup></td><td colspan="2"></td></tr>
+                <tr>
+                    <td>8<sup>30</sup></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>10<sup>10</sup></td>
+                    <td colspan="2"><strong>ПРИКЛАДНАЯ ФИЗИЧЕСКАЯ КУЛЬТУРА</strong></td>
+                </tr>
+                <tr>
+                    <td>12<sup>00</sup></td>
+                    <td colspan="2">
+                        <strong>Экономика (л), 4-29 Г</strong>
+                        <br>
+                        Доц. Шлевкова Т.В.
+                    </td>
+                </tr>
+                <tr>
+                    <td>13<sup>40</sup></td>
+                    <td colspan="2">
+                        <strong>Матем. моделирование физ.систем (с), 2-11 М</strong>
+                        <br>
+                        Доц. Тен А.В.
+                    </td>
+                </tr>
+                <tr>
+                    <td>15<sup>20</sup></td>
+                    <td colspan="2"></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -127,11 +248,45 @@ if(isset($_GET['sem'])){
 
             <!-- Table -->
             <table class="table table_ras">
-                <tr><td>8<sup>30</sup></td><td><strong>Языки высокого уровня (лаб),  1-12М</strong><br>Доц. Кузьмин Н.М., ст.преп. Бутенко М.А</td><td></td></tr>
-                <tr><td>10<sup>10</sup></td><td colspan="2"><strong>Математический анализ (с), 33-08А</strong><br>Асс. Радчик М.В.</td></tr>
-                <tr><td>12<sup>00</sup></td><td colspan="2"><div class="chis"><strong>Технологии сети Интернет (л), 3-02М</strong><br>Доц. Писарев А.В.</div><hr><div class="zn"><strong>Языки высокого уровня (л), 3-02М</strong><br>Доц. Храпов С.С.</div></td></tr>
-                <tr><td>13<sup>40</sup></td><td colspan="2"><strong>ПРИКЛАДНАЯ ФИЗИЧЕСКАЯ КУЛЬТУРА</strong></td></tr>
-                <tr><td>15<sup>20</sup></td><td colspan="2"></td></tr>
+                <tr>
+                    <td>8<sup>30</sup></td>
+                    <td>
+                        <strong>Дискретная математика (с), 2-11 М</strong>
+                        <br>
+                        Ст.преп. Штельмах Т.В.
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10<sup>10</sup></td>
+                    <td colspan="2">
+                        <strong>Метрология, стандартизация, сертификация (л), 2-04 М</strong>
+                        <br>
+                        Проф. Боровков Д.П.
+                    </td>
+                </tr>
+                <tr>
+                    <td>12<sup>00</sup></td>
+                    <td colspan="2">
+                        <div class="chis">
+                            <strong>Метрология, стандартизация, сертиф. (лаб), 2-04 М</strong>
+                            <br>
+                            Проф. Боровков Д.П.
+                        </div>
+                        <hr>
+                        <div class="zn">
+                            Окно
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>13<sup>40</sup></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>15<sup>20</sup></td>
+                    <td colspan="2"></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -142,11 +297,26 @@ if(isset($_GET['sem'])){
 
             <!-- Table -->
             <table class="table table_ras">
-               <tr><td>8<sup>30</sup></td><td colspan="2"></td></tr>
-                <tr><td>10<sup>10</sup></td><td><div class="chis"><strong>Физика (лаб), 2-07К,</strong><br>Доц. Федунов Р.Г</div><hr><div class="zn">Окно</div></td><td><div class="chis">Окно</div><hr><div class="zn"><strong>Физика (лаб), 2-07К,</strong><br>Доц. Федунов Р.Г</div></td></tr>
-                <tr><td>12<sup>00</sup></td><td><div class="chis"><strong>Физика (лаб), 2-07К,</strong><br>Доц. Федунов Р.Г</div><hr><div class="zn">Окно</div></td><td><div class="chis">Окно</div><hr><div class="zn"><strong>Физика (лаб), 2-07К,</strong><br>Доц. Федунов Р.Г</div></td></tr>
-                <tr><td>13<sup>40</sup></td><td colspan="2"></td></tr>
-                <tr><td>15<sup>20</sup></td><td colspan="2"></td></tr> 
+                <tr>
+                    <td>8<sup>30</sup></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>10<sup>10</sup></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>12<sup>00</sup></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>13<sup>40</sup></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>15<sup>20</sup></td>
+                    <td colspan="2"></td>
+                </tr>
             </table>
         </div>
     </div>
