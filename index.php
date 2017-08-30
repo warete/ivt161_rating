@@ -17,6 +17,7 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="/">Главная</a></li>          
+          <li class="active"><a href="/materials">Материалы</a></li>          
         </ul>
         <h3 class="text-muted" style="color: #e61414;">ИВТ-161</h3>
       </div>
@@ -53,7 +54,14 @@ if(isset($_GET['sem'])){
 
     echo "</table>";
         
-} else {?>
+} else 
+    if($_GET['action'] == 'materials'){
+        echo '<div class="row marketing">
+                 <h2 id="raspisanie" class="cover-heading">Материалы</h2> 
+                 В данный момент раздел пуст.
+              </div>';
+
+        } else{?>
 
     <div class="row marketing">
        <h2 id="raspisanie" class="cover-heading">Расписание</h2>   

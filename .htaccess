@@ -1,5 +1,6 @@
 RewriteEngine on
 RewriteBase /
 
-# Товар.
+# Страницы.
 RewriteRule ^semestr/([0-9]+)?$	index.php?sem=$1
+RewriteRule ^materials index.php?action=materials
