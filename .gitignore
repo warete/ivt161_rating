@@ -8,3 +8,6 @@
 *.ttf
 *.woff
 *.otf
+node_modules/
+gulpfile.js
+package.json
