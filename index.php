@@ -55,13 +55,23 @@ if(isset($_GET['sem'])){
     echo "</table>";
         
 } else 
-    if($_GET['action'] == 'materials'){
-        echo '<div class="row marketing">
-                 <h2 id="raspisanie" class="cover-heading">Материалы</h2> 
-                 В данный момент раздел пуст.
-              </div>';
+    if($_GET['action'] == 'materials'){ ?>
+        <div class="row marketing">
+            <h2 class="cover-heading">Материалы</h2> 
+            <div class="container" style="    text-align: center;">
+                <div class="col-xs-12">
+                    <div data-day="1" class="panel">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Объектно-ориентированное программирование </div>  
+                        <iframe src="https://drive.google.com/embeddedfolderview?id=0B0qZTJhiu6hrckNJSUxrS21YeG8#grid" style="width:100%; height:600px; border:0;"></iframe>
 
-        } else{?>
+                        <!-- <a href="https://drive.google.com/open?id=0B0qZTJhiu6hrX1hvSjhUZkdKc2M">Лабораторные работы</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <? } else{?>
 
     <div class="row marketing">
        <h2 id="raspisanie" class="cover-heading">Расписание</h2>   
