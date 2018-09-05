@@ -12,16 +12,32 @@
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <!-- Brand и toggle сгруппированы для лучшего отображения на мобильных дисплеях -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" style="color: #e61414;">ИВТ-161</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/#schedule">Расписание</a></li>
+                <li><a href="/semestr/<?=$current_semestr?>">Рейтинг</a></li>
+                <li><a href="/materials">Материалы</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
 
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="/">Главная</a></li>          
-          <li class="active"><a href="/materials">Материалы</a></li>          
-        </ul>
-        <h3 class="text-muted" style="color: #e61414;">ИВТ-161</h3>
-      </div>
-            
 <?php
 include(__DIR__.'/config.php');   
 include(__DIR__.'/functions.php');
@@ -188,11 +204,9 @@ if(isset($_GET['sem'])){
                 $curWeekText = "Текущая неделя - ЧИСЛИТЕЛЬ";
         }
         ?>    
-       <h2 id="raspisanie" class="cover-heading">Расписание <span class="pull-right"><?=$curWeekText?></span></h2>
+       <h2 id="schedule" class="cover-heading">Расписание <span class="pull-right"><?=$curWeekText?></span></h2>
+        <div class="row row-flex row-flex-wrap">
         <?foreach ($scheduleData as $dayData):?>
-            <?if ($dayCounter == 1 || $dayCounter == 4):?>
-                <div class="container" style="    text-align: center;">
-            <?endif;?>
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <div data-day="<?=$dayCounter?>" class="panel<?echo($curDay == $dayCounter ? " panel-success" : " panel-default");?>">
                         <div class="panel-heading"><?=$dayData["name"]?></div>
@@ -238,11 +252,9 @@ if(isset($_GET['sem'])){
                         <?endif;?>
                     </div>
                 </div>
-            <?if ($dayCounter == 3 || $dayCounter == 6):?>
-                </div>
-            <?endif;?>
             <?$dayCounter++;?>
         <?endforeach;?>
+        </div>
         <div class="container" style="margin-bottom: 20px;">
         <h2 class="cover-heading">Рейтинг</h2>
         <div class="list-group">
