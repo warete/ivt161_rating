@@ -4,3 +4,5 @@ RewriteBase /
 # Страницы.
 RewriteRule ^semestr/([0-9]+)?$	index.php?sem=$1
 RewriteRule ^materials index.php?action=materials
+RewriteRule ^student/([0-9]+)/([0-9]+)?$	index.php?student=$1&semestr=$2
+RewriteRule ^student/([0-9]+)?$	index.php?student=$1

@@ -50,6 +50,9 @@ border-top: 2px solid #0f0a10 !important;
     color: #055307;
     font-weight: bold;
 }
+.name a {
+	color: #055307;
+}
 body{
     font-family: arial; 
     background: #0f0a10;  
