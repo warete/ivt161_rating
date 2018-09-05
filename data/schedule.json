@@ -325,8 +325,8 @@
         ]
       },
       {
-        "hasGroups": true,
-        "groups": [
+        "hasChildren": true,
+        "children": [
           {
             "name": "Теория вероятностей и математическая статистика (л)",
             "teachers": [
