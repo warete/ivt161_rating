@@ -38,7 +38,7 @@ $current_semestr = 5;
 $lessonsTime = array(
 	array("hours" => 8, "minutes" => 30),
 	array("hours" => 10, "minutes" => 10),
-	array("hours" => 12, "minutes" => 00),
+	array("hours" => 12, "minutes" => "00"),
 	array("hours" => 13, "minutes" => 40),
 	array("hours" => 15, "minutes" => 20)
 );

@@ -277,7 +277,10 @@ function getSubjectHtml($data)
     $data["rooms"] = getIndexArray($data["rooms"]);
     $data["teachers"] = getIndexArray($data["teachers"]);
     if (strlen($data["name"]) > 0):
-        $templateStr .= $data["name"] . ", ";
+        $name = $data["name"];
+        if (count($data["rooms"]) > 0)
+            $name .= ", ";
+        $templateStr .= $name;
     else:
         $templateStr .= "Окно";
     endif;
