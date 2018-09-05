@@ -28,331 +28,260 @@ include(__DIR__.'/functions.php');
 
 if(isset($_GET['sem'])){
     $semestr = (int)$_GET['sem'];
-    $ou = file_get_contents("http://volsu.ru/activities/education/eduprogs/rating.php?plan=000000843&list=13&level=03&profile=&semestr=".$semestr);      
-        
-    /*
-     *Формирование DOM
-     */
-    echo '<input class="filter" name="livefilter" type="text" placeholder="Поиск по именам и количеству баллов" value="" autofocus>';
-    echo "<table class='table table-bordered spc live_filter desktop_rate'>";
-    echo "<tr id='thead' style='cursor: pointer;'><td onclick='sort2(this)'>ФИО</td>";
-    get_subjects($ou);
+    $ou = file_get_contents("http://volsu.ru/activities/education/eduprogs/rating.php?plan=000000843&list=13&level=03&profile=&semestr=".$semestr);  
 
-    for($j=0; $j < count($students); $j++)
-    {    
-        get_results($students[$j][1], $ou, $students[$j][0]);
-        // get_results_m($students[$j][1], $ou, $students[$j][0]);
+    if(stristr($ou, 'Произошел сбой работы программы. В настоящее время ведутся технические работы на сервере. Попробуйте позже.') != FALSE) {
+        echo '<br><div class="alert alert-danger">
+                    <strong>Произошел сбой работы программы.</strong> В настоящее время ведутся технические работы на сервере университета. Попробуйте позже.
+                </div>';
     }
+    else
+    {
+        /*
+         *Формирование DOM
+         */
+        echo '<br><div class="row">';
+        for($u = 1; $u <= 8; $u++)
+        {
+            if($u == $semestr)
+            {
+                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-3">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+            }
+            else
+            {
+                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-3">'.$sem_names[$u-1].' семестр</a>';
+            }
+        }
+        echo '</div>';
+        echo '<input class="filter" name="livefilter" type="text" placeholder="Поиск по именам и количеству баллов" value="" autofocus>';
+        echo "<table class='table table-bordered spc live_filter desktop_rate'>";
+        echo "<tr id='thead' style='cursor: pointer;'><td onclick='sort2(this)'>ФИО</td>";
+        $null_subjects = array();
+        $null_subjects = get_subjects($ou, $semestr, $subjects);
+        // print_r($null_subjects);
 
-    echo "</table>";
+        for($j=0; $j < count($students); $j++)
+        {    
+            get_results($students[$j][1], $ou, $students[$j][0], $null_subjects, $semestr);
+            // get_results_m($students[$j][1], $ou, $students[$j][0]);
+        }
 
-    echo "<table class='table table-bordered mob_rate'>";
-    for($j=0; $j < count($students); $j++)
-    {        
-        get_results_m($students[$j][1], $ou, $students[$j][0]);
-    }
+        echo "</table>";
 
-    echo "</table>";
+        echo "<table class='table table-bordered mob_rate'>";
+        for($j=0; $j < count($students); $j++)
+        {        
+            get_results_m($students[$j][1], $ou, $students[$j][0], $null_subjects, $semestr);
+        }
+
+        echo "</table>";
+    }         
+    
         
 } else 
     if($_GET['action'] == 'materials'){ ?>
         <div class="row marketing">
             <h2 class="cover-heading">Материалы</h2> 
             <div class="container" style="    text-align: center;">
-                <div class="col-xs-12">
+                <!-- <div class="col-md-4">
                     <div data-day="1" class="panel">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">Объектно-ориентированное программирование </div>  
+                        Default panel contents
+                        <div class="panel-heading">Базы данных</div>  
                         <iframe src="https://drive.google.com/embeddedfolderview?id=0B0qZTJhiu6hrckNJSUxrS21YeG8#grid" style="width:100%; height:600px; border:0;"></iframe>
-
-                        <!-- <a href="https://drive.google.com/open?id=0B0qZTJhiu6hrX1hvSjhUZkdKc2M">Лабораторные работы</a> -->
+                
+                        <a href="https://yadi.sk/d/IGOJBOFa3RYipR">https://yadi.sk/d/IGOJBOFa3RYipR</a>
+                    </div>  
+                </div>
+                <div class="col-md-4">
+                    <div data-day="1" class="panel">
+                        Default panel contents
+                        <div class="panel-heading">Операционные системы</div>  
+                        <iframe src="https://drive.google.com/embeddedfolderview?id=0B0qZTJhiu6hrckNJSUxrS21YeG8#grid" style="width:100%; height:600px; border:0;"></iframe>
+                
+                        <a href="https://yadi.sk/d/XHqvTN-L3RYis6">https://yadi.sk/d/XHqvTN-L3RYis6</a>
                     </div>
                 </div>
+                <div class="col-md-4">                    
+                    <div data-day="1" class="panel">
+                        Default panel contents
+                        <div class="panel-heading">Численные методы</div>  
+                        <iframe src="https://drive.google.com/embeddedfolderview?id=0B0qZTJhiu6hrckNJSUxrS21YeG8#grid" style="width:100%; height:600px; border:0;"></iframe>
+                
+                        <a href="https://yadi.sk/d/7CQXd3vd3RYith">https://yadi.sk/d/7CQXd3vd3RYith</a>
+                    </div>
+                </div> -->
             </div>
         </div>
 
-        <? } else{?>
+        <? } else
+                if(isset($_GET['student'])){
+                    $semestr = $_GET['semestr']?$_GET['semestr']:1;
+                    $ou = file_get_contents("http://volsu.ru/activities/education/eduprogs/rating.php?plan=000000843&list=13&level=03&profile=&semestr=".$semestr);  
+
+                    if(stristr($ou, 'Произошел сбой работы программы. В настоящее время ведутся технические работы на сервере. Попробуйте позже.') != FALSE) {
+                        echo '<br><div class="alert alert-danger">
+                                    <strong>Произошел сбой работы программы.</strong> В настоящее время ведутся технические работы на сервере университета. Попробуйте позже.
+                                </div>';
+                    }
+                    else
+                    {
+                        $null_subjects = array();
+                        $null_subjects = get_subjects_s($ou, $semestr, $subjects);
+                        $student_fio = "Неизвестный студент";
+                        for($j=0; $j < count($students); $j++)
+                        {    
+                            if($students[$j][1] == $_GET['student'])
+                                $student_fio = $students[$j][0];
+                        }
+                        /*
+                         *Формирование DOM
+                         */
+                        /*echo '<br><div class="row"><a href="/student/'.$_GET['student'].'/1" class="list-group-item list-group-item-info col-md-3">Первый семестр</a>
+                            <a href="/student/'.$_GET['student'].'/2" class="list-group-item list-group-item-info col-md-3">Второй семестр</a>
+                            <a href="/student/'.$_GET['student'].'/3" class="list-group-item list-group-item-info col-md-3">Третий семестр</a>
+                            <a href="/student/'.$_GET['student'].'/4" class="list-group-item list-group-item-info col-md-3">Четвертый семестр</a>
+                            <a href="/student/'.$_GET['student'].'/5" class="list-group-item list-group-item-info col-md-3">Пятый семестр</a>
+                            <a href="/student/'.$_GET['student'].'/6" class="list-group-item list-group-item-info col-md-3">Шестой семестр</a>
+                            <a href="/student/'.$_GET['student'].'/7" class="list-group-item list-group-item-info col-md-3">Седьмой семестр</a>
+                            <a href="/student/'.$_GET['student'].'/8" class="list-group-item list-group-item-info col-md-3">Восьмой семестр</a></div>';*/                        
+                        echo '<br><div class="col-md-4">';
+                        echo '<a href="/semestr/'.$semestr.'" class="list-group-item list-group-item-danger col-md-12">Перейти к общему рейтингу<span class="badge"><span class="glyphicon glyphicon-th-list"></span></span></a>';
+                        for($u = 1; $u <= 8; $u++)
+                        {
+                            if($u == $semestr)
+                            {
+                                echo '<a href="/student/'.$_GET['student'].'/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                            }
+                            else
+                            {
+                                echo '<a href="/student/'.$_GET['student'].'/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                            }
+                        }
+                        echo '</div>';
+                        echo "<div class='col-md-8'><table class='table table-bordered'>";
+                        get_results_m($_GET['student'], $ou, $student_fio, $null_subjects, $semestr);
+
+                        echo "</table></div>";
+                    }      
+
+                } else{?>
 
     <div class="row marketing">
-       <h2 id="raspisanie" class="cover-heading">Расписание</h2>   
-    <div class="container" style="    text-align: center;">
-    <div class="col-lg-4">
-        <div data-day="1" class="panel">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Понедельник</div>  
-
-            <!-- Table -->
-            <table class="table table_ras">
-                <tr>
-                    <td>8<sup>30</sup></td>
-                    <td colspan="2">
-                        <strong>Физика (л), 3-01А</strong><br>Проф. Михайлова В.А.                    
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10<sup>10</sup></td>
-                    <td colspan="2">
-                        <strong>Объектно-ориентированное программирование (л), 3-02 М</strong>
-                        <br>
-                        Проф. Феськков С.В.
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>12<sup>00</sup></td>
-                    <td>
-                        <div class="chis"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
-                        <hr>
-                        <div class="zn">Окно</div>
-                    </td>
-                    <td>
-                        <div class="chis">Окно</div>
-                        <hr>
-                        <div class="zn"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>13<sup>40</sup></td>
-                    <td>
-                        <div class="chis"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
-                        <hr>
-                        <div class="zn">Окно</div>
-                    </td>
-                    <td>
-                        <div class="chis">Окно</div>
-                        <hr>
-                        <div class="zn"><strong>Физика (лаб), 2-07К</strong><br>Асс. Лебедева О.С.</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>15<sup>20</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div data-day="2" class="panel">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Вторник</div>  
-
-            <!-- Table -->
-            <table class="table table_ras">
-                <tr>
-                    <td>8<sup>30</sup></td>
-                    <td colspan="2">
-                        <strong>Математическое моделирование физических систем (л), 3-02 М</strong>
-                        <br>
-                        Доц. Тен А.В.
-                    </td>
-                </tr>
-                <tr>
-                    <td>10<sup>10</sup></td>
-                    <td colspan="2">
-                        <strong>Дискретная математика (л), 3-02 М</strong>
-                        <br>
-                        Доц. Лебедев В.Н.
-                    </td>
-                </tr>
-                <tr>
-                    <td>12<sup>00</sup></td>
-                    <td colspan="2">
-                        <strong>ПРИКЛАДНАЯ ФИЗИЧЕСКАЯ КУЛЬТУРА</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>13<sup>40</sup></td>
-                    <td>
-                        <strong>Ин.Яз., 33-01 А</strong>
-                        <br>
-                        Ст.пр. Ашихманова Н.А.
-                    </td>
-                    <td>
-                        <strong>Ин.Яз., 3-03 А</strong>
-                        <br>
-                        Асс. Павлова Е.Б.
-                    </td>
-                </tr>
-                <tr>
-                    <td>15<sup>20</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div data-day="3" class="panel">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Среда</div>  
-
-            <!-- Table -->
-            <table class="table table_ras">
-                <tr>
-                    <td>8<sup>30</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>10<sup>10</sup></td>
-                    <td colspan="2">
-                        <strong>Об.ориент.программ. (лаб), 1-12М, 1-13М</strong>
-                        <br>
-                        Доц. Хохлова С.С., доц. Юданов В.В., асс. Шафран Ю.В.
-                    </td>
-                </tr>
-                <tr>
-                    <td>12<sup>00</sup></td>
-                    <td colspan="2">
-                        <strong>Физика (с), 2-11 М</strong>
-                        <br>
-                        Асс. Лебедева О.С.
-                    </td>
-                </tr>
-                <tr>
-                    <td>13<sup>40</sup></td>
-                    <td colspan="2"><strong>ГУМАНИТАРНЫЕ КУРСЫ ПО ВЫБОРУ</strong></td>
-                </tr>
-                <tr>
-                    <td>15<sup>20</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-      </div>  
-        <div class="container" style="    text-align: center;">
-    <div class="col-lg-4">
-        <div data-day="4" class="panel">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Четверг</div>  
-
-            <!-- Table -->
-            <table class="table table_ras">
-                <tr>
-                    <td>8<sup>30</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>10<sup>10</sup></td>
-                    <td colspan="2"><strong>ПРИКЛАДНАЯ ФИЗИЧЕСКАЯ КУЛЬТУРА</strong></td>
-                </tr>
-                <tr>
-                    <td>12<sup>00</sup></td>
-                    <td colspan="2">
-                        <strong>Экономика (л), 4-29 Г</strong>
-                        <br>
-                        Доц. Шлевкова Т.В.
-                    </td>
-                </tr>
-                <tr>
-                    <td>13<sup>40</sup></td>
-                    <td colspan="2">
-                        <strong>Матем. моделирование физ.систем (с), 2-11 М</strong>
-                        <br>
-                        Доц. Тен А.В.
-                    </td>
-                </tr>
-                <tr>
-                    <td>15<sup>20</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div data-day="5" class="panel">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Пятница</div>  
-
-            <!-- Table -->
-            <table class="table table_ras">
-                <tr>
-                    <td>8<sup>30</sup></td>
-                    <td>
-                        <strong>Дискретная математика (с), 2-11 М</strong>
-                        <br>
-                        Ст.преп. Штельмах Т.В.
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10<sup>10</sup></td>
-                    <td colspan="2">
-                        <strong>Метрология, стандартизация, сертификация (л), 2-04 М</strong>
-                        <br>
-                        Проф. Боровков Д.П.
-                    </td>
-                </tr>
-                <tr>
-                    <td>12<sup>00</sup></td>
-                    <td colspan="2">
-                        <div class="chis">
-                            <strong>Метрология, стандартизация, сертиф. (лаб), 2-04 М</strong>
-                            <br>
-                            Проф. Боровков Д.П.
-                        </div>
-                        <hr>
-                        <div class="zn">
-                            Окно
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>13<sup>40</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>15<sup>20</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-            <div class="col-lg-4">
-        <div data-day="6" class="panel">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Суббота</div>  
-
-            <!-- Table -->
-            <table class="table table_ras">
-                <tr>
-                    <td>8<sup>30</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>10<sup>10</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>12<sup>00</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>13<sup>40</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-                <tr>
-                    <td>15<sup>20</sup></td>
-                    <td colspan="2"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-        </div>
+        <?
+        $scheduleData = getSchedule(); 
+        $dayCounter = 1;
+        $curDay = date("N");
+        $curWeek =  date("W");
+        $curWeekText = "";
+        if ($curWeek % 2 == 0)
+        {
+            if ($curDay == 7)
+                $curWeekText = "Следующая неделя - ЧИСЛИТЕЛЬ";
+            else
+                $curWeekText = "Текущая неделя - ЧИСЛИТЕЛЬ";
+        }
+        else
+        {
+            if ($curDay == 7)
+                $curWeekText = "Текущая неделя - ЗНАМЕНАТЕЛЬ";
+            else
+                $curWeekText = "Следующая неделя - ЗНАМЕНАТЕЛЬ";
+        }
+        ?>    
+       <h2 id="raspisanie" class="cover-heading">Расписание <span class="pull-right"><?=$curWeekText?></span></h2>
+        <?foreach ($scheduleData as $dayData):?>
+            <?if ($dayCounter == 1 || $dayCounter == 4):?>
+                <div class="container" style="    text-align: center;">
+            <?endif;?>
+                <div class="col-lg-4">
+                    <div data-day="<?=$dayCounter?>" class="panel<?echo($curDay == $dayCounter ? " panel-success" : " panel-default");?>">
+                        <div class="panel-heading"><?=$dayData["name"]?></div>
+                        <?if (count($dayData["lessons"]) > 0):?>
+                            <table class="table table_ras">
+                                <?foreach ($dayData["lessons"] as $lessonNumber => $lessonData):?>
+                                    <tr>
+                                        <td><?=$lessonsTime[$lessonNumber]["hours"]?><sup><?=$lessonsTime[$lessonNumber]["minutes"]?></sup></td>
+                                        <td>
+                                            <?if ($lessonData["hasChildren"]):?>
+                                                <?
+                                                $childrenCounter = 0;
+                                                foreach ($lessonData["children"] as $childrenData):?>
+                                                    <div class="row<?echo($childrenCounter == 0 ? " chis" : " zn");?>">
+                                                        <?if ($childrenData["hasGroups"]):?>
+                                                            <?foreach ($childrenData["groups"] as $groupData):?>
+                                                                <div class="col-sm-6">
+                                                                    <?=getSubjectHtml($groupData)?>
+                                                                </div>
+                                                            <?endforeach;?>
+                                                        <?else:?>
+                                                            <div class="col-sm-12">
+                                                                <?=getSubjectHtml($childrenData)?>
+                                                            </div>
+                                                        <?endif;?>
+                                                    </div>
+                                                    <?echo($childrenCounter == 0 ? "<hr>" : "");?>
+                                                <?
+                                                $childrenCounter++;
+                                                endforeach;?>
+                                            <?else:?>
+                                                <?=getSubjectHtml($lessonData)?>
+                                            <?endif;?>
+                                        </td>
+                                    </tr>
+                                <?endforeach;?>
+                            </table>
+                        <?endif;?>
+                    </div>
+                </div>
+            <?if ($dayCounter == 3 || $dayCounter == 6):?>
+                </div>
+            <?endif;?>
+            <?$dayCounter++;?>
+        <?endforeach;?>
         <div class="container" style="margin-bottom: 20px;">
         <h2 class="cover-heading">Рейтинг</h2>
         <div class="list-group">
             <div class="col-lg-6">
-                <a href="/semestr/1" class="list-group-item list-group-item-success">Первый семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>
-                <a href="/semestr/2" class="list-group-item list-group-item-success">Второй семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>
-                <a href="/semestr/3" class="list-group-item list-group-item-info">Третий семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></a>
-                <a href="/semestr/4" class="list-group-item list-group-item-danger">Четвертый семестр</a>
+                <?
+                for($u = 1; $u <= 4; $u++)
+                {
+                    if($u == $current_semestr)
+                    {
+                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
+                    }
+                    else
+                        if($u <= $current_semestr)
+                        {
+                            echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                        }
+                        else
+                            if($u >= $current_semestr)
+                            {
+                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                            }
+                }
+                ?>
             </div>
             <div class="col-lg-6">
-                <a href="/semestr/5" class="list-group-item list-group-item-danger">Пятый семестр</a>
-                <a href="/semestr/6" class="list-group-item list-group-item-danger">Шестой семестр</a>
-                <a href="/semestr/7" class="list-group-item list-group-item-danger">Седьмой семестр</a>
-                <a href="/semestr/8" class="list-group-item list-group-item-danger">Восьмой семестр</a>
+                <?
+                for($u = 5; $u <= 8; $u++)
+                {
+                    if($u == $current_semestr)
+                    {
+                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
+                    }
+                    else
+                        if($u <= $current_semestr)
+                        {
+                            echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                        }
+                        else
+                            if($u >= $current_semestr)
+                            {
+                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                            }
+                }
+                ?>
             </div>
         </div>  
         </div>
