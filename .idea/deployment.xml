@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="gd local">
+  <component name="PublishConfigData" serverName="ivt161.ml ZZZ">
     <serverData>
       <paths name="GoldenDesert Front-end">
         <serverdata>
@@ -10,6 +10,13 @@
         </serverdata>
       </paths>
       <paths name="gd local">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ivt161.ml ZZZ">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
