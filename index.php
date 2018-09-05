@@ -176,16 +176,16 @@ if(isset($_GET['sem'])){
         if ($curWeek % 2 == 0)
         {
             if ($curDay == 7)
-                $curWeekText = "Следующая неделя - ЧИСЛИТЕЛЬ";
+                $curWeekText = "Следующая неделя - ЗНАМЕНАТЕЛЬ";
             else
-                $curWeekText = "Текущая неделя - ЧИСЛИТЕЛЬ";
+                $curWeekText = "Текущая неделя - ЗНАМЕНАТЕЛЬ";
         }
         else
         {
             if ($curDay == 7)
-                $curWeekText = "Текущая неделя - ЗНАМЕНАТЕЛЬ";
+                $curWeekText = "Следующая неделя - ЧИСЛИТЕЛЬ";
             else
-                $curWeekText = "Следующая неделя - ЗНАМЕНАТЕЛЬ";
+                $curWeekText = "Текущая неделя - ЧИСЛИТЕЛЬ";
         }
         ?>    
        <h2 id="raspisanie" class="cover-heading">Расписание <span class="pull-right"><?=$curWeekText?></span></h2>
@@ -206,7 +206,12 @@ if(isset($_GET['sem'])){
                                                 <?
                                                 $childrenCounter = 0;
                                                 foreach ($lessonData["children"] as $childrenData):?>
-                                                    <div class="row<?echo($childrenCounter == 0 ? " chis" : " zn");?>">
+                                                    <div class="row<?
+                                                    if ($childrenCounter == 0 && $curWeek % 2 == 0)
+                                                        echo " text-muted";
+                                                    elseif ($childrenCounter == 1 && $curWeek % 2 != 0)
+                                                        echo " text-muted";
+                                                    ?>">
                                                         <?if ($childrenData["hasGroups"]):?>
                                                             <?foreach ($childrenData["groups"] as $groupData):?>
                                                                 <div class="col-sm-6">
