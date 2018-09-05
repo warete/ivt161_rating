@@ -193,7 +193,7 @@ if(isset($_GET['sem'])){
             <?if ($dayCounter == 1 || $dayCounter == 4):?>
                 <div class="container" style="    text-align: center;">
             <?endif;?>
-                <div class="col-lg-4">
+                <div class="col-sm-12 col-md-6 col-lg-6">
                     <div data-day="<?=$dayCounter?>" class="panel<?echo($curDay == $dayCounter ? " panel-success" : " panel-default");?>">
                         <div class="panel-heading"><?=$dayData["name"]?></div>
                         <?if (count($dayData["lessons"]) > 0):?>

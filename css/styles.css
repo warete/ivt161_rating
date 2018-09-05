@@ -38,6 +38,9 @@ table {
     background: rgb(31, 38, 44);
     color: rgb(251, 255, 255);
 }
+.table_ras {
+    height: 100%;
+}
 .table_ras td {
 border-top: 2px solid #0f0a10 !important;
 }
@@ -128,4 +131,8 @@ body{
 .mat-block {
 	background: rgb(31, 38, 44);
     color: rgb(251, 255, 255);
+}
+.navbar-inverse {
+    background-color: rgb(31, 38, 44);
+    background-image: none;
 }
