@@ -200,8 +200,9 @@ if(isset($_GET['sem'])){
                 } else{?>
 
     <div class="row marketing">
+
         <?
-        $scheduleData = getSchedule(); 
+        $scheduleData = getSchedule();
         $dayCounter = 1;
         $curDay = date("N");
         $curWeek =  date("W");
@@ -220,8 +221,10 @@ if(isset($_GET['sem'])){
             else
                 $curWeekText = "Текущая неделя - ЧИСЛИТЕЛЬ";
         }
-        ?>    
-       <h2 id="schedule" class="cover-heading">Расписание <span class="pull-right"><?=$curWeekText?></span></h2>
+        ?>
+        <div class="container">
+            <h2 id="schedule" class="cover-heading">Расписание <span class="pull-right"><?=$curWeekText?></span></h2>
+        </div>
         <div class="row row-flex row-flex-wrap">
         <?foreach ($scheduleData as $dayData):?>
                 <div class="col-sm-12 col-md-6 col-lg-6">
@@ -273,51 +276,51 @@ if(isset($_GET['sem'])){
         <?endforeach;?>
         </div>
         <div class="container" style="margin-bottom: 20px;">
-        <h2 class="cover-heading">Рейтинг</h2>
-        <div class="list-group">
-            <div class="col-lg-6">
-                <?
-                for($u = 1; $u <= 4; $u++)
-                {
-                    if($u == $current_semestr)
+            <h2 class="cover-heading">Рейтинг</h2>
+            <div class="list-group">
+                <div class="col-lg-6">
+                    <?
+                    for($u = 1; $u <= 4; $u++)
                     {
-                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
-                    }
-                    else
-                        if($u <= $current_semestr)
+                        if($u == $current_semestr)
                         {
-                            echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                            echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
                         }
                         else
-                            if($u >= $current_semestr)
+                            if($u <= $current_semestr)
                             {
-                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
                             }
-                }
-                ?>
-            </div>
-            <div class="col-lg-6">
-                <?
-                for($u = 5; $u <= 8; $u++)
-                {
-                    if($u == $current_semestr)
-                    {
-                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
+                            else
+                                if($u >= $current_semestr)
+                                {
+                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                                }
                     }
-                    else
-                        if($u <= $current_semestr)
+                    ?>
+                </div>
+                <div class="col-lg-6">
+                    <?
+                    for($u = 5; $u <= 8; $u++)
+                    {
+                        if($u == $current_semestr)
                         {
-                            echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                            echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
                         }
                         else
-                            if($u >= $current_semestr)
+                            if($u <= $current_semestr)
                             {
-                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
                             }
-                }
-                ?>
+                            else
+                                if($u >= $current_semestr)
+                                {
+                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                                }
+                    }
+                    ?>
+                </div>
             </div>
-        </div>  
         </div>
     </div>
     
