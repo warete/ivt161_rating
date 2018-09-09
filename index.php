@@ -248,7 +248,7 @@ if(isset($_GET['sem'])){
                                                     ?>">
                                                         <?if ($childrenData["hasGroups"]):?>
                                                             <?foreach ($childrenData["groups"] as $groupData):?>
-                                                                <div class="col-sm-6">
+                                                                <div class="col-xs-6">
                                                                     <?=getSubjectHtml($groupData)?>
                                                                 </div>
                                                             <?endforeach;?>
