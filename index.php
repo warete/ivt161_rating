@@ -221,6 +221,8 @@ if(isset($_GET['sem'])){
             else
                 $curWeekText = "Текущая неделя - ЧИСЛИТЕЛЬ";
         }
+        if ($curDay == 7)
+            $curWeek++;
         ?>
         <div class="container">
             <h2 id="schedule" class="cover-heading">Расписание <span class="pull-right"><?=$curWeekText?></span></h2>
