@@ -211,14 +211,14 @@ if(isset($_GET['sem'])){
         if ($curWeek % 2 == 0)
         {
             if ($curDay == 7)
-                $curWeekText = "Следующая неделя - ЗНАМЕНАТЕЛЬ";
+                $curWeekText = "Следующая неделя - ЧИСЛИТЕЛЬ";
             else
                 $curWeekText = "Текущая неделя - ЗНАМЕНАТЕЛЬ";
         }
         else
         {
             if ($curDay == 7)
-                $curWeekText = "Следующая неделя - ЧИСЛИТЕЛЬ";
+                $curWeekText = "Следующая неделя - ЗНАМЕНАТЕЛЬ";
             else
                 $curWeekText = "Текущая неделя - ЧИСЛИТЕЛЬ";
         }
