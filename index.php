@@ -29,6 +29,10 @@
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body>
+<?
+include(__DIR__.'/config.php');
+include(__DIR__.'/functions.php');
+?>
 <nav class="navbar navbar-inverse">
     <div class="container">
         <!-- Brand и toggle сгруппированы для лучшего отображения на мобильных дисплеях -->
@@ -56,9 +60,6 @@
 
     <div class="container">
 <?php
-include(__DIR__.'/config.php');   
-include(__DIR__.'/functions.php');
-
 if(isset($_GET['sem'])){
     $semestr = (int)$_GET['sem'];
     $ou = file_get_contents("http://volsu.ru/activities/education/eduprogs/rating.php?plan=000000843&list=13&level=03&profile=&semestr=".$semestr);  
