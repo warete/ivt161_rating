@@ -117,33 +117,30 @@ if(isset($_GET['sem'])){
         <div class="row marketing">
             <h2 class="cover-heading">Материалы</h2> 
             <div class="container" style="    text-align: center;">
-                <!-- <div class="col-md-4">
-                    <div data-day="1" class="panel">
-                        Default panel contents
-                        <div class="panel-heading">Базы данных</div>  
-                        <iframe src="https://drive.google.com/embeddedfolderview?id=0B0qZTJhiu6hrckNJSUxrS21YeG8#grid" style="width:100%; height:600px; border:0;"></iframe>
-                
-                        <a href="https://yadi.sk/d/IGOJBOFa3RYipR">https://yadi.sk/d/IGOJBOFa3RYipR</a>
-                    </div>  
+                 <div class="col-md-4">
+                    <div data-day="1" class="panel panel-default">
+                        <div class="panel-heading">Визуальное программирование</div>
+                        <div class="panel-body">
+                            <a href="https://yadi.sk/d/xMV6-gYX5YvQcQ">https://yadi.sk/d/xMV6-gYX5YvQcQ</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <div data-day="1" class="panel">
-                        Default panel contents
-                        <div class="panel-heading">Операционные системы</div>  
-                        <iframe src="https://drive.google.com/embeddedfolderview?id=0B0qZTJhiu6hrckNJSUxrS21YeG8#grid" style="width:100%; height:600px; border:0;"></iframe>
-                
-                        <a href="https://yadi.sk/d/XHqvTN-L3RYis6">https://yadi.sk/d/XHqvTN-L3RYis6</a>
+                    <div data-day="1" class="panel panel-default">
+                        <div class="panel-heading">Проектирование информационных систем</div>
+                        <div class="panel-body">
+                            <a href="https://yadi.sk/d/LYmENeQzWbwyrA">https://yadi.sk/d/LYmENeQzWbwyrA</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">                    
-                    <div data-day="1" class="panel">
-                        Default panel contents
-                        <div class="panel-heading">Численные методы</div>  
-                        <iframe src="https://drive.google.com/embeddedfolderview?id=0B0qZTJhiu6hrckNJSUxrS21YeG8#grid" style="width:100%; height:600px; border:0;"></iframe>
-                
-                        <a href="https://yadi.sk/d/7CQXd3vd3RYith">https://yadi.sk/d/7CQXd3vd3RYith</a>
+                    <div data-day="1" class="panel panel-default">
+                        <div class="panel-heading">Технологии разработки web-сервисов</div>
+                        <div class="panel-body">
+                            <a href="https://yadi.sk/d/Hrzb30geUFbmjA">https://yadi.sk/d/Hrzb30geUFbmjA</a>
+                        </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
 
