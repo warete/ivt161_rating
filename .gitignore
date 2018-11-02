@@ -14,3 +14,4 @@ package.json
 fonts/
 bot.php
 .idea/
+*.txt
