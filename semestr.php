@@ -2,12 +2,13 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/prolog.php";
 use Warete\VolsuRating;
 
-$title = "Рейтинг";
+$title = "Рейтинг студентов";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
 ?>
 <body>
 <?include $_SERVER["DOCUMENT_ROOT"] . "/include/top-menu.php";?>
 <div class="container">
+    <h2 class="cover-heading">Рейтинг студентов</h2>
     <?
     $semestr = intval($_GET['sem']);
     if ($semestr > 0 && $semestr <= 8)

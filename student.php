@@ -2,15 +2,16 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/prolog.php";
 use Warete\VolsuRating;
 
-$title = "Рейтинг";
+$semestr = intval($_GET['sem']);
+$studentId = $_GET['student'];
+$title = "Рейтинг студента " . $arStudents[$studentId];
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
 ?>
 <body>
 <?include $_SERVER["DOCUMENT_ROOT"] . "/include/top-menu.php";?>
 <div class="container">
+    <h2 class="cover-heading">Рейтинг студента <strong><?=$arStudents[$studentId]?></strong></h2>
     <?
-    $semestr = intval($_GET['sem']);
-    $studentId = $_GET['student'];
     if ($semestr > 0 && $semestr <= 8)
     {
         $rating = new VolsuRating("000000843", $semestr, $CONFIG["GROUP_NAME"]);
@@ -36,7 +37,6 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
                 <div class="col-md-8 rating">
                     <?foreach ($ratingData as $dataItem):?>
                         <div class="panel panel-success rating__student">
-                            <div class="panel-heading"><a href="/student/<?=$dataItem["STUDENT"]["ID"]?>/<?=$semestr?>/"><?=(strlen($dataItem["STUDENT"]["INFO"]) ? $dataItem["STUDENT"]["INFO"] . " (" . $dataItem["STUDENT"]["ID"] . ")" : $dataItem["STUDENT"]["ID"])?></a></div>
                             <table class="table">
                                 <?foreach ($dataItem["RATING"] as $arRating):?>
                                     <tr>
