@@ -343,3 +343,28 @@ function showAlert($message, $type = "danger")
 {
     return '<div class="alert alert-' . $type . '" role="alert">' . $message . '</div>';
 }
+
+function send($id , $message)
+{
+    global $BOT_CONFIG;
+    $url = 'https://api.vk.com/method/messages.send?';
+    $request_params = [
+        'message' => $message,
+        'user_id' => $id,
+        'access_token' => $BOT_CONFIG["VK"]["ACCESS_TOKEN"],
+        'peer_id' => $BOT_CONFIG["VK"]["GROUP_ID"],
+        'v' => $BOT_CONFIG["VK"]["VERSION"]
+    ];
+    $get_params = http_build_query($request_params);
+    $myCurl = curl_init();
+    curl_setopt_array($myCurl, array(
+        CURLOPT_URL => $url . $get_params,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => http_build_query(array())
+    ));
+    $response = curl_exec($myCurl);
+    curl_close($myCurl);
+
+    echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r($response, true) . '</pre>';
+}
