@@ -291,14 +291,19 @@ function check_subject($subject_str, $subjectss){
  */
 function getSchedule()
 {
-    $jsonFileName = "/data/schedule.json";
+    return getJsonFileContent("/data/schedule.json");
+}
+
+function getJsonFileContent($filePath)
+{
+    $jsonFileName = $filePath;
     $filePath = $_SERVER['DOCUMENT_ROOT'] . $jsonFileName;
 
     $fileData = file_get_contents($filePath);
-    
-    $scheduleData = json_decode($fileData, true);
 
-    return $scheduleData;
+    $jsonData = json_decode($fileData, true);
+
+    return $jsonData;
 }
 
 function getIndexArray($array)
