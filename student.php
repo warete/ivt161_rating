@@ -2,7 +2,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/prolog.php";
 use Warete\VolsuRating;
 
-$semestr = intval($_GET['sem']);
+$semestr = intval($_GET['sem']) ? $_GET["sem"] : 1;
 $studentId = $_GET['student'];
 $title = "Рейтинг студента " . $arStudents[$studentId];
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";

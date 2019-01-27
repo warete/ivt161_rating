@@ -4,6 +4,6 @@ RewriteBase /
 # Страницы.
 RewriteRule ^semestr/([0-9]+)/?$	semestr.php?sem=$1
 RewriteRule ^semestr/([0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$	semestr.php?sem=$1&sort=$2&direction=$3
-RewriteRule ^materials/ index.php?action=materials
+RewriteRule ^materials/ materials.php
 RewriteRule ^student/([A-Za-z0-9-_]+)/([0-9]+)/?$	student.php?student=$1&sem=$2
-RewriteRule ^student/([0-9]+)?$	index.php?student=$1
+RewriteRule ^student/([A-Za-z0-9-_]+)/?$	student.php?student=$1
