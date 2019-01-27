@@ -93,17 +93,17 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
                         {
                             if($u == $CONFIG["CURRENT_SEMESTR"])
                             {
-                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
+                                echo '<a href="/semestr/'.$u.'/" class="list-group-item list-group-item-info col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
                             }
                             else
                                 if($u <= $CONFIG["CURRENT_SEMESTR"])
                                 {
-                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                                    echo '<a href="/semestr/'.$u.'/" class="list-group-item list-group-item-success col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
                                 }
                                 else
                                     if($u >= $CONFIG["CURRENT_SEMESTR"])
                                     {
-                                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр</a>';
+                                        echo '<a href="/semestr/'.$u.'/" class="list-group-item list-group-item-danger col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр</a>';
                                     }
                         }
                         ?>
@@ -114,17 +114,17 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
                         {
                             if($u == $CONFIG["CURRENT_SEMESTR"])
                             {
-                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
+                                echo '<a href="/semestr/'.$u.'/" class="list-group-item list-group-item-info col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
                             }
                             else
                                 if($u <= $CONFIG["CURRENT_SEMESTR"])
                                 {
-                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                                    echo '<a href="/semestr/'.$u.'/" class="list-group-item list-group-item-success col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
                                 }
                                 else
                                     if($u >= $CONFIG["CURRENT_SEMESTR"])
                                     {
-                                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр</a>';
+                                        echo '<a href="/semestr/'.$u.'/" class="list-group-item list-group-item-danger col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр</a>';
                                     }
                         }
                         ?>

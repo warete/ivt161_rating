@@ -15,8 +15,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Главная</a></li>
                 <li><a href="/#schedule">Расписание</a></li>
-                <li><a href="/semestr/<?=$current_semestr?>">Рейтинг</a></li>
-                <li><a href="/materials">Материалы</a></li>
+                <li><a href="/semestr/<?=$CONFIG["CURRENT_SEMESTR"]?>/">Рейтинг</a></li>
+                <li><a href="/materials/">Материалы</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
