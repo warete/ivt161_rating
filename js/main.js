@@ -111,13 +111,14 @@ function sort(el) {
             child = 'li';
         } else if ($(this).is('table')) {
             child = 'tbody tr';
+        } else if ($(this).is('.rating')) {
+            child = '.rating__student';
         }
         
         // Определяем переменные
         var hide;
         var show;
         var filter;
-        var show_m;
         
         // Событие для элемента ввода
         $('input.filter').keyup(function() {
@@ -127,14 +128,7 @@ function sort(el) {
             
             // Получаем то, что нужно спрятать, и то, что нужно показать
             hide = $(filterTarget).find(child + ':not(:Contains("' + filter + '"))');
-            show = $(filterTarget).find(child + ':Contains("' + filter + '")')
-            /*hide.hide();
-            show.show();
-            for(var u = 0; u < show.length/2; u++)
-            {
-                $(filterTarget).find(child + '[data-tag = '+ $(show[u]).attr("data-tag") +']').show();
-                
-            }*/
+            show = $(filterTarget).find(child + ':Contains("' + filter + '")');
 
             
             // Анимируем пункты, которые нужно спрятать и показать
@@ -144,11 +138,9 @@ function sort(el) {
             } else if ( aType == 'slide' ) {
                 hide.slideUp(500);
                 show.slideDown(500);
-                show_m.slideDown(500);
             } else if ( aType == 'fade' ) {
                 hide.fadeOut(400);
-                show.fadeIn(400);   
-                show_m.fadeIn(400);                                
+                show.fadeIn(400);
             }            
             
         });     
@@ -162,7 +154,7 @@ function sort(el) {
 
 })(jQuery);
         $(document).ready(function() {
-        $('table.live_filter').liveFilter('fade');
+        $('.rating').liveFilter('fade');
     });
 
 
