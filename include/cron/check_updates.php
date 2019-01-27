@@ -1,7 +1,8 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/config/bot.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/prolog.php";
-use Warete\VolsuRating;
+use Warete\VolsuRating,
+    Warete\Cache;
 
 if (isset($_GET["token"]) && $_GET["token"] == $BOT_CONFIG["COMMON"]["CRON_ACCESS"])
 {
@@ -18,6 +19,7 @@ if (isset($_GET["token"]) && $_GET["token"] == $BOT_CONFIG["COMMON"]["CRON_ACCES
         {
             $message .= "ℹ" . $item["SUBJECT"]["NAME"] . (strlen($item["SUBJECT"]["TYPE"]) ? " (" . $item["SUBJECT"]["TYPE"] . ")" : "") . ": " . strip_tags($item["RESULT"]) . "\n\r";
         }
+        Cache::clearCache("/rating/");
         send($BOT_CONFIG["VK"]["ADMIN_ID"], $message);
     }
 }
