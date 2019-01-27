@@ -43,7 +43,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
                                 <table class="table table_ras">
                                     <?foreach ($dayData["lessons"] as $lessonNumber => $lessonData):?>
                                         <tr>
-                                            <td><?=$lessonsTime[$lessonNumber]["hours"]?><sup><?=$lessonsTime[$lessonNumber]["minutes"]?></sup></td>
+                                            <td><?=$CONFIG["LESSONS_TIME"][$lessonNumber]["hours"]?><sup><?=$CONFIG["LESSONS_TIME"][$lessonNumber]["minutes"]?></sup></td>
                                             <td>
                                                 <?if ($lessonData["hasChildren"]):?>
                                                     <?
@@ -91,19 +91,19 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
                         <?
                         for($u = 1; $u <= 4; $u++)
                         {
-                            if($u == $current_semestr)
+                            if($u == $CONFIG["CURRENT_SEMESTR"])
                             {
-                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
+                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
                             }
                             else
-                                if($u <= $current_semestr)
+                                if($u <= $CONFIG["CURRENT_SEMESTR"])
                                 {
-                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
                                 }
                                 else
-                                    if($u >= $current_semestr)
+                                    if($u >= $CONFIG["CURRENT_SEMESTR"])
                                     {
-                                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр</a>';
                                     }
                         }
                         ?>
@@ -112,19 +112,19 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
                         <?
                         for($u = 5; $u <= 8; $u++)
                         {
-                            if($u == $current_semestr)
+                            if($u == $CONFIG["CURRENT_SEMESTR"])
                             {
-                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
+                                echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-info col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-star"></span></span></a>';
                             }
                             else
-                                if($u <= $current_semestr)
+                                if($u <= $CONFIG["CURRENT_SEMESTR"])
                                 {
-                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$sem_names[$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
+                                    echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-success col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>';
                                 }
                                 else
-                                    if($u >= $current_semestr)
+                                    if($u >= $CONFIG["CURRENT_SEMESTR"])
                                     {
-                                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$sem_names[$u-1].' семестр</a>';
+                                        echo '<a href="/semestr/'.$u.'" class="list-group-item list-group-item-danger col-md-12">'.$CONFIG["SEMESTR_NAMES"][$u-1].' семестр</a>';
                                     }
                         }
                         ?>
