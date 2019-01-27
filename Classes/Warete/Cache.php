@@ -12,6 +12,8 @@ class Cache
     protected $cacheDir = "";
     /** @var string Идентификатор кеша */
     protected $cacheId = "";
+    /** @var int Начальное время работы скрипта (для отладки) */
+    protected static $startExecutionTime = 0;
 
     /**
      * Cache constructor.
@@ -148,5 +150,24 @@ class Cache
                 mkdir($startDir);
             }
         }
+    }
+
+    /**
+     * Метод для запуска таймера выполнения скрипта (отладка)
+     */
+    public static function startExecutionTimer()
+    {
+        static::$startExecutionTime = microtime(true);
+    }
+
+    /**
+     * Метод для остановки таймера выполнения скрипта. Возвращает длительность работы скрипта в секундах (отладка)
+     *
+     * @return int|mixed
+     */
+    public static function endExecutionTimer()
+    {
+        $time_end = microtime(true);
+        return $time_end - static::$startExecutionTime;
     }
 }
