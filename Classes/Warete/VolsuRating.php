@@ -22,6 +22,8 @@ class VolsuRating
     protected $subjects = [];
     /** @var string Адрес, по которому доступен рейтинг на сайте ВолГУ */
     protected $volsuApiUrl = "https://volsu.ru/rating/test.php";
+    /** @var string Путь к файлу с хэшем рейтинга */
+    protected $hashDir = "/data/rating/cron_hash.txt";
 
     /**
      * Rating constructor.
@@ -76,6 +78,72 @@ class VolsuRating
     public function getStudents()
     {
         return $this->students;
+    }
+
+    /**
+     * Метод для проверки изменений в рейтинге
+     *
+     * @return array
+     */
+    public function checkUpdates()
+    {
+        $response = [
+            "STATUS" => ""
+        ];
+        $this->ratingData = $this->getVolsuData();
+        $ratingHash = md5(serialize($this->ratingData));
+        $oldHash = $this->getOldHash();
+        if ($ratingHash != $oldHash)
+        {
+            if ($this->setNewHash($ratingHash))
+            {
+                $response["STATUS"] = "HAS_CHANGES";
+            }
+            else
+            {
+                $response["STATUS"] = "ERROR";
+            }
+        }
+        else
+        {
+            $response["STATUS"] = "NO_CHANGES";
+        }
+
+        return $response;
+    }
+
+    /**
+     * Метод для получения существующего хэша из файла
+     *
+     * @return bool|string
+     */
+    protected function getOldHash()
+    {
+        $oldHash = false;
+        if (file_exists($_SERVER["DOCUMENT_ROOT"] . $this->hashDir))
+        {
+            $oldHash = file_get_contents($_SERVER["DOCUMENT_ROOT"] . $this->hashDir);
+        }
+
+        return $oldHash;
+    }
+
+    /**
+     * Метод для сохранения нового хэша в файл
+     *
+     * @param $hash
+     * @return bool
+     */
+    protected function setNewHash($hash)
+    {
+        if (file_put_contents($_SERVER["DOCUMENT_ROOT"] . $this->hashDir, $hash))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
