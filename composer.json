@@ -1,0 +1,16 @@
+{
+    "name": "warete/ivt161rating",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Mr.Warete",
+            "email": "mr-warete@mail.ru"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Warete\\": "Classes"
+        }
+    }
+}

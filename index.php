@@ -31,6 +31,7 @@
 <body>
 <?
 include(__DIR__.'/config.php');
+require_once $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
 include(__DIR__.'/functions.php');
 ?>
 <nav class="navbar navbar-inverse">
