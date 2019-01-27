@@ -43,10 +43,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
             ?>
             <div class="row">
                 <?for($u = 1; $u <= 8; $u++):?>
-                    <?if ($u == $CONFIG["CURRENT_SEMESTR"]):?>
-                        <a href="/semestr/<?=$u?>" class="list-group-item list-group-item-success col-md-3"><?=$CONFIG["SEMESTR_NAMES"][$u - 1]?> семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>
+                    <?if ($u == $semestr):?>
+                        <a href="/semestr/<?=$u?>/" class="list-group-item list-group-item-success col-md-3"><?=$CONFIG["SEMESTR_NAMES"][$u - 1]?> семестр<span class="badge"><span class="glyphicon glyphicon-ok"></span></span></a>
                     <?else:?>
-                        <a href="/semestr/<?=$u?>" class="list-group-item list-group-item-info col-md-3"><?=$CONFIG["SEMESTR_NAMES"][$u - 1]?> семестр</a>
+                        <a href="/semestr/<?=$u?>/" class="list-group-item list-group-item-info col-md-3"><?=$CONFIG["SEMESTR_NAMES"][$u - 1]?> семестр</a>
                     <?endif;?>
                 <?endfor;?>
             </div>
