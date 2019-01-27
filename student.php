@@ -1,6 +1,7 @@
 <?
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/prolog.php";
-use Warete\VolsuRating;
+use Warete\VolsuRating,
+    Warete\Cache;
 
 $semestr = intval($_GET['sem']) ? $_GET["sem"] : 1;
 $studentId = $_GET['student'];
@@ -14,9 +15,19 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
     <?
     if ($semestr > 0 && $semestr <= 8)
     {
-        $rating = new VolsuRating("000000843", $semestr, $CONFIG["GROUP_NAME"]);
-        $rating->setStudents($arStudents);
-        $ratingData = $rating->getRating($studentId);
+        $cacheId = md5($_SERVER["SCRIPT_NAME"] . $semestr . $studentId);
+        $cache = new Cache($cacheId, 3600 * 24, "/rating/student/");
+        if ($cache->checkCache())
+        {
+            $ratingData = $cache->getCache();
+        }
+        else
+        {
+            $rating = new VolsuRating("000000843", $semestr, $CONFIG["GROUP_NAME"]);
+            $rating->setStudents($arStudents);
+            $ratingData = $rating->getRating($studentId);
+            $cache->setCache($ratingData);
+        }
         if (!count($ratingData))
         {
             showAlert('<strong>Произошел сбой работы программы.</strong> В настоящее время ведутся технические работы на сервере университета. Попробуйте позже.', 'danger');

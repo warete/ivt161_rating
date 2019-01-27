@@ -1,6 +1,7 @@
 <?
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/prolog.php";
-use Warete\VolsuRating;
+use Warete\VolsuRating,
+    Warete\Cache;
 
 $title = "Рейтинг студентов";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
@@ -13,9 +14,19 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
     $semestr = intval($_GET['sem']);
     if ($semestr > 0 && $semestr <= 8)
     {
-        $rating = new VolsuRating("000000843", $semestr, $CONFIG["GROUP_NAME"]);
-        $rating->setStudents($arStudents);
-        $ratingData = $rating->getRating();
+        $cacheId = md5($_SERVER["SCRIPT_NAME"] . $semestr);
+        $cache = new Cache($cacheId, 3600 * 24, "/rating/");
+        if ($cache->checkCache())
+        {
+            $ratingData = $cache->getCache();
+        }
+        else
+        {
+            $rating = new VolsuRating("000000843", $semestr, $CONFIG["GROUP_NAME"]);
+            $rating->setStudents($arStudents);
+            $ratingData = $rating->getRating();
+            $cache->setCache($ratingData);
+        }
         if ((isset($_GET["sort"]) && strlen($_GET["sort"]) > 0)
             && (isset($_GET["direction"]) && strlen($_GET["direction"]) > 0))
         {
