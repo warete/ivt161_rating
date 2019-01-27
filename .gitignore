@@ -1,5 +1,6 @@
 node_modules/
-bot.php
+/bot.php
 .idea/
 *.txt
 /vendor/
+test*
