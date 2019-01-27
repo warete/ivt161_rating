@@ -124,6 +124,45 @@ function get_results_special($id, $out, $phio, $null_subjects)
     }
     echo "<tr data-tag='student{$id}'><td><b>Всего баллов</b></td><td>{$points}</td></tr>";
 }
+
+function get_results_special_api($id, $out, $phio, $null_subjects)
+{
+    $mass = explode("№ зачетной книжки", $out);
+    $mas2s = explode("</tr>", $mass[1]);
+    $mass = $mas2s[0];
+    $mass = explode("<td>", $mass);
+
+    $points = 0;
+
+    $arStudent = array();
+    $arStudent['fio'] = strip_tags($phio);
+    $arStudent['id'] = $id;
+
+    $mas = explode($id, $out);
+    $mas2 = explode("</tr>", $mas[1]);
+    $mas = $mas2[0];
+    $mas = explode("<td>", $mas);
+
+    for($i = 0; $i<(count($mas)-1); $i++)
+    {
+        $curr_strs = str_replace("</td>", "", $mass[$i+1]);
+        $curr_strs = str_replace("<br>", "", $curr_strs);
+        $curr_str = str_replace("</td>", "", $mas[$i+1]);
+        $curr_str = (int)str_replace("<br>", "", $curr_str);
+
+        $arStudent["rating"][] = array(
+            "subject" => trim(strip_tags($curr_strs)),
+            "result" => $curr_str
+        );
+        $points += $curr_str;
+    }
+    $arStudent["rating"][] = array(
+        "subject" => "Всего баллов",
+        "result" => $points
+    );
+
+    return $arStudent;
+}
     
 /*
  *Генерация массива с предметами
