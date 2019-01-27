@@ -161,6 +161,7 @@ class VolsuRating
                     "RESULT" => $item
                 ];
             }
+            $arRatingData["RATING"][] = $this->getRatingSummary($arRatingData["RATING"]);
             if (count($arRatingData))
             {
                 $arData[] = $arRatingData;
@@ -208,5 +209,28 @@ class VolsuRating
         }
 
         return $arContent;
+    }
+
+    /**
+     * Метод для подсчета общего количества баллов
+     *
+     * @param $ratingData
+     * @return array
+     */
+    protected function getRatingSummary($ratingData)
+    {
+        $sum = 0;
+        $arSummary = [
+            "SUBJECT" => [
+                "NAME" => "Всего"
+            ]
+        ];
+        foreach ($ratingData as $item)
+        {
+            $sum += $item["RESULT"];
+        }
+        $arSummary["RESULT"] = $sum;
+
+        return $arSummary;
     }
 }
