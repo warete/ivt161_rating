@@ -11,6 +11,12 @@ $CONFIG = [
     ],
     "CURRENT_SEMESTR" => 5,
     "GROUP_NAME" => "ИВТ-161",
+    "SUBJECT_TYPE_CLASSES" => [
+        "Экзамен" => "danger",
+        "Зачет с оценкой" => "warning",
+        "Курсовая работа" => "info",
+        "Зачет" => "default",
+    ]
 ];
 $students = array(
     array("Байша Юлия Геннадьевна", 579549),

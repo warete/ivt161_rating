@@ -111,9 +111,9 @@ body{
     .mob_rate {
         display: table;
     }
-    .filter {
+    /*.filter {
         display: none;
-    }
+    }*/
 }
 .list-group-item-success {
     color: #3c763d;
@@ -160,4 +160,16 @@ body{
     width: 100%;
     overflow: hidden;
     background-color: transparent;
+}
+
+.rating .rating__student {
+    background: rgb(31, 38, 44);
+}
+
+.rating .rating__student .panel-heading {
+    font-weight: bold;
+}
+
+.rating .rating__student .panel-heading a {
+    color: #055307!important;
 }
