@@ -6,7 +6,7 @@ use Warete\VolsuRating,
 
 if (isset($_GET["token"]) && $_GET["token"] == $BOT_CONFIG["COMMON"]["CRON_ACCESS"])
 {
-    $rating = new VolsuRating("000000843", $semestr, $CONFIG["GROUP_NAME"]);
+    $rating = new VolsuRating($CONFIG["PLAN_ID"], $semestr, $CONFIG["GROUP_NAME"]);
     $rating->setStudents($arStudents);
     $updatesInfo = $rating->checkUpdates();
     if ($updatesInfo["STATUS"] == "HAS_CHANGES")
