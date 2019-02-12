@@ -22,7 +22,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
         }
         else
         {
-            $rating = new VolsuRating("000000843", $semestr, $CONFIG["GROUP_NAME"]);
+            $rating = new VolsuRating($CONFIG["PLAN_ID"], $semestr, $CONFIG["GROUP_NAME"]);
             $rating->setStudents($arStudents);
             $ratingData = $rating->getRating();
             $cache->setCache($ratingData);
