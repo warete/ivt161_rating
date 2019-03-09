@@ -1,14 +1,18 @@
 [
   {
-    "name": "Визуальное программирование",
-    "materials": ["https://yadi.sk/d/xMV6-gYX5YvQcQ"]
+    "name": "1С: Предприятие",
+    "materials": ["https://yadi.sk/d/-Tzo0jKH8bvNyA"]
   },
   {
-    "name": "Проектирование информационных систем",
-    "materials": ["https://yadi.sk/d/LYmENeQzWbwyrA"]
+    "name": "Автоматизированные методы обработки текстовой информации",
+    "materials": ["https://yadi.sk/d/B1L5yAhiaP9oPA"]
   },
   {
-    "name": "Технологии разработки web-сервисов",
-    "materials": ["https://yadi.sk/d/Hrzb30geUFbmjA"]
+    "name": "Инженерная и компьютерная графика",
+    "materials": ["https://yadi.sk/d/RZ80peFiIRhXoA"]
+  },
+  {
+    "name": "ЭВМ и периферийные устройства",
+    "materials": ["https://yadi.sk/d/RZ80peFiIRhXoA"]
   }
 ]
