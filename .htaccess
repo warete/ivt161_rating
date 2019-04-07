@@ -7,3 +7,6 @@ RewriteRule ^semestr/([0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$	semestr.php?sem
 RewriteRule ^materials/ materials.php
 RewriteRule ^student/([A-Za-z0-9-_]+)/([0-9]+)/?$	student.php?student=$1&sem=$2
 RewriteRule ^student/([A-Za-z0-9-_]+)/?$	student.php?student=$1
+
+# Админка
+RewriteRule ^admin/([A-Za-z0-9-_]+)/?$	admin/$1.php
