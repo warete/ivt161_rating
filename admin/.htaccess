@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "admin auth"
+AuthUserFile D:/openserver/OpenServer/domains/ivt161.local/admin/.htpasswd
+Require valid-user
