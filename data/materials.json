@@ -1,25 +1,31 @@
 [
   {
+    "id": 1,
     "name": "1С: Предприятие",
     "materials": ["https://yadi.sk/d/-Tzo0jKH8bvNyA"]
   },
   {
+    "id": 2,
     "name": "Автоматизированные методы обработки текстовой информации",
     "materials": ["https://yadi.sk/d/B1L5yAhiaP9oPA"]
   },
   {
+    "id": 3,
     "name": "Инженерная и компьютерная графика",
     "materials": ["https://yadi.sk/d/RZ80peFiIRhXoA"]
   },
   {
+    "id": 4,
     "name": "ЭВМ и периферийные устройства",
     "materials": ["https://yadi.sk/d/2gCPRDJ_XMGqgA"]
   },
   {
+    "id": 5,
     "name": "Робототехника",
     "materials": ["https://yadi.sk/d/3S3yaE6-dw-TNw"]
   },
   {
+    "id": 6,
     "name": "Сети и телекоммуникации",
     "materials": ["https://yadi.sk/d/QCTnWPANgDoMjw"]
   }
