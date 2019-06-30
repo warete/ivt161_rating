@@ -22,7 +22,7 @@ class Rating extends React.Component {
         return (
             <div>
                 { this.state.rating.map((item) => (
-                    <RatingRow data={ item }/>
+                    <RatingRow key={`studentRating${item.STUDENT.ID}`} data={ item }/>
                 )) }
             </div>
         )

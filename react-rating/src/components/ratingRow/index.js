@@ -14,8 +14,8 @@ class RatingRow extends React.Component {
                 <Card.Body style={{padding: 0}}>
                     <Table striped hover variant="dark">
                         <tbody>
-                        { this.props.data.RATING.map((item) => (
-                            <tr>
+                        { this.props.data.RATING.map((item, i) => (
+                            <tr key={`${item.SUBJECT.NAME}${this.props.data.STUDENT.ID}_${i}`}>
                                 <td>{ item.SUBJECT.NAME }</td>
                                 <td>{ item.SUBJECT.TYPE }</td>
                                 <td>{ item.RESULT }</td>
