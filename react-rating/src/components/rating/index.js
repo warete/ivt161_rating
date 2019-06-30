@@ -8,7 +8,8 @@ class Rating extends React.Component {
     constructor() {
         super();
         this.state = {
-            rating: []
+            rating: [],
+            search: null
         };
     }
 
@@ -18,10 +19,31 @@ class Rating extends React.Component {
         });
     }
 
+    get rating() {
+        return (this.state.search !== null && String(this.state.search).length) ? (
+            this.state.rating.filter(item => {
+                return String(item.STUDENT.INFO).toLowerCase().includes(this.state.search)
+            })
+        ) : this.state.rating;
+    }
+
+    dataSearch = (e) => {
+        const value = e.target.value.toLowerCase();
+        this.setState({ search: value });
+    };
+
     render() {
+        const { rating, dataSearch } = this;
         return (
             <div>
-                { this.state.rating.map((item) => (
+                <input
+                    type="text"
+                    className="form-control my-2"
+                    placeholder="Начните вводить имя..."
+                    onChange={dataSearch}
+                    autoFocus
+                />
+                { rating.map((item) => (
                     <RatingRow key={`studentRating${item.STUDENT.ID}`} data={ item }/>
                 )) }
             </div>
