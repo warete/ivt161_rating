@@ -9,7 +9,7 @@ import Materials from '../materials'
 
 function App() {
   return (
-      <div>
+      <div className="bg-dark text-light">
           <TopMenu />
           <Container>
               <Switch>
