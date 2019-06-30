@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 export default () => {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" collapseOnSelect expand="lg" >
             <Container>
                 <Navbar.Brand as={Link} to="/">ИВТ-161</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
