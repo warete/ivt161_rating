@@ -1,4 +1,5 @@
 <?
+header("Access-Control-Allow-Origin: *");
 require_once $_SERVER["DOCUMENT_ROOT"] . "/include/prolog.php";
 use Warete\VolsuRating,
     Warete\Cache;
