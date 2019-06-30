@@ -1,23 +1,25 @@
 import React from 'react';
-import './styles.css';
+import "bootstrap/dist/css/bootstrap.css";
+import { Container } from "react-bootstrap";
+import TopMenu from '../topMenu'
+import { Switch, Route } from 'react-router-dom'
+import Schedule from '../schedule'
+import Rating from '../rating'
+import Materials from '../materials'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+          <TopMenu />
+          <Container>
+              <Switch>
+                  <Route exact path="/" component={Schedule}/>
+                  <Route path="/schedule" component={Schedule}/>
+                  <Route path="/rating" component={Rating}/>
+                  <Route path="/materials" component={Materials}/>
+              </Switch>
+          </Container>
+      </div>
   );
 }
 
