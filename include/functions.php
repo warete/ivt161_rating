@@ -348,11 +348,13 @@ function send($id , $message)
 {
     global $BOT_CONFIG;
     $url = 'https://api.vk.com/method/messages.send?';
+    $rand_id = rand(1, 2147483647);
     $request_params = [
         'message' => $message,
         'user_id' => $id,
         'access_token' => $BOT_CONFIG["VK"]["ACCESS_TOKEN"],
         'peer_id' => $BOT_CONFIG["VK"]["GROUP_ID"],
+        'random_id' => $rand_id,
         'v' => $BOT_CONFIG["VK"]["VERSION"]
     ];
     $get_params = http_build_query($request_params);
@@ -366,5 +368,5 @@ function send($id , $message)
     $response = curl_exec($myCurl);
     curl_close($myCurl);
 
-    echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r($response, true) . '</pre>';
-}
+    return $response;
+}	
