@@ -1,3 +1,3 @@
 export const config = {
-    apiUrl: '/data/rating.json'
+    apiUrl: 'http://ivt161.tk/api/'
 };
