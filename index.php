@@ -13,6 +13,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
             $dayCounter = 1;
             $curDay = date("N");
             $curWeek =  date("W");
+            $curWeek++;
             $curWeekText = "";
             if ($curWeek % 2 == 0)
             {
