@@ -154,11 +154,12 @@ body{
 
 .row-flex > div[class*='col-'] {
     margin:-.2px;
+    margin-bottom: 30px;
 }
 
 .panel {
     width: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: transparent;
 }
 

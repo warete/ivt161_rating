@@ -8,8 +8,10 @@ $CONFIG = [
         ["hours" => 12, "minutes" => "00"],
         ["hours" => 13, "minutes" => 40],
         ["hours" => 15, "minutes" => 20],
+        ["hours" => 17, "minutes" => "00"],
+        ["hours" => 18, "minutes" => 40],
     ],
-    "CURRENT_SEMESTR" => 6,
+    "CURRENT_SEMESTR" => 7,
     "GROUP_NAME" => "ИВТ-161",
     "SUBJECT_TYPE_CLASSES" => [
         "Экзамен" => "danger",
