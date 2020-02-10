@@ -16,4 +16,4 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         REMOTE_DIR: ivt161.ml
-        ARGS: --verbose
+        ARGS: --verbose --exclude-glob=.git*/** --exclude-glob=.git**
