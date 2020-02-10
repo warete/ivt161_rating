@@ -15,7 +15,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/include/header.php";
             $curWeek =  date("W");
             $curWeek++;
             $curWeekText = "";
-            if ($curWeek % 2 == 0)
+            if ($curWeek % 2 != 0)
             {
                 if ($curDay == 7)
                     $curWeekText = "Следующая неделя - ЧИСЛИТЕЛЬ";

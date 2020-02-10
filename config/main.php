@@ -11,7 +11,7 @@ $CONFIG = [
         ["hours" => 17, "minutes" => "00"],
         ["hours" => 18, "minutes" => 40],
     ],
-    "CURRENT_SEMESTR" => 7,
+    "CURRENT_SEMESTR" => 8,
     "GROUP_NAME" => "ИВТ-161",
     "SUBJECT_TYPE_CLASSES" => [
         "Экзамен" => "danger",
