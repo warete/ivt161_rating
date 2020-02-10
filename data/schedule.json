@@ -107,6 +107,7 @@
   "friday": {
     "name": "Пятница",
     "lessons": [
+      {},
       {
         "hasChildren": false,
         "name": "КВ Мультимедиа технологии (лаб)",
