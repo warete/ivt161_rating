@@ -4,16 +4,38 @@ on:
       - master
 name: Deploy to stage
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+#   FTP-Deploy-Action:
+#     name: FTP-Deploy-Action
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@master
+#     - name: FTP-Deploy-Action
+#       uses: SamKirkland/FTP-Deploy-Action@2.0.0
+#       env:
+#         FTP_SERVER: ${{ secrets.FTP_SERVER }}
+#         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+#         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+#         REMOTE_DIR: ivt161.ml
+#         ARGS: --verbose --exclude-glob=.git*/** --exclude-glob=.git**
+  deploy:
+    name: deploy-to-stage
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        FTP_SERVER: ${{ secrets.FTP_SERVER }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        REMOTE_DIR: ivt161.ml
-        ARGS: --verbose --exclude-glob=.git*/** --exclude-glob=.git**
+    - name: git reset & pull
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        script: |
+          cd ${{ secrets.PROJECT_ROOT }}
+          git reset --hard
+          git pull origin master --tags
+    - name: send message
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          Деплой для ${{ repo }} завершился
