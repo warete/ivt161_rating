@@ -34,6 +34,8 @@ jobs:
           ssh-add ~/.ssh/ivt_161_id_rsa
           git reset --hard
           git pull origin master --tags
+          composer install
+          rm -rf ./cache/*
     - name: send message
       uses: appleboy/telegram-action@master
       with:
