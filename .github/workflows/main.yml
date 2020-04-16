@@ -26,10 +26,11 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
+        password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
           cd ${{ secrets.PROJECT_ROOT }}
+          ssh -T git@github.com
           git reset --hard
           git pull origin master --tags
     - name: send message
