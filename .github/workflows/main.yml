@@ -38,4 +38,4 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          Деплой для ${{ repo }} завершился
+          Деплой для ${{ GITHUB_REPOSITORY }} завершился
